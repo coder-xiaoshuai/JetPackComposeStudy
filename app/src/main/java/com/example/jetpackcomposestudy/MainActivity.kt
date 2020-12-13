@@ -1,6 +1,7 @@
 package com.example.jetpackcomposestudy
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.Box
@@ -15,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.ContextAmbient
 import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.imageResource
@@ -29,6 +31,7 @@ import com.example.jetpackcomposestudy.ui.JetPackComposeStudyTheme
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             JetPackComposeStudyTheme {
                 // A surface container using the 'background' color from the theme
@@ -93,8 +96,11 @@ fun StudyList(studyList: MutableList<String>) {
      * 可滚动的垂直布局
      */
     ScrollableColumn() {
-        studyList.forEach {
-            StudyCardItem(bgUrl = "", title = it, onClick = {})
+        val context = ContextAmbient.current
+        studyList.forEachIndexed { index, title ->
+            StudyCardItem(bgUrl = "", title = title, onClick = {
+                Toast.makeText(context, "点击了第${index + 1}", Toast.LENGTH_SHORT).show()
+            })
         }
     }
 }
