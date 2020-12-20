@@ -1,14 +1,12 @@
 package com.example.jetpackcomposestudy
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.*
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -40,34 +38,41 @@ class MainActivity : AppCompatActivity() {
 
                     StudyList(
                         studyList = arrayListOf(
-                            "知识点1",
-                            "知识点2",
-                            "知识点3",
-                            "知识点4",
-                            "知识点5",
-                            "知识点6",
-                            "知识点7",
-                            "知识点8",
-                            "知识点9",
-                            "知识点10",
-                            "知识点11",
-                            "知识点12",
-                            "知识点13",
-                            "知识点14",
-                            "知识点15",
-                            "知识点16",
-                            "知识点17",
-                            "知识点18",
-                            "知识点19",
-                            "知识点20",
-                            "知识点21",
-                            "知识点22",
-                            "知识点23",
-                            "知识点24",
-                            "知识点25",
-                            "知识点26",
-                            "知识点27",
-                            "知识点28"
+                            ItemBean(
+                                "",
+                                "Text",
+                                "text使用详解"
+                            ),
+                            ItemBean(
+                                "",
+                                "Button",
+                                "Button使用详解"
+                            ),
+                            ItemBean(
+                                "",
+                                "Image",
+                                "Image使用详解"
+                            ),
+                            ItemBean(
+                                "",
+                                "Raw",
+                                "Raw使用详解"
+                            ),
+                            ItemBean(
+                                "",
+                                "Column",
+                                "Column使用详解"
+                            ),
+                            ItemBean(
+                                "",
+                                "Box",
+                                "Box使用详解"
+                            ),
+                            ItemBean(
+                                "",
+                                "recyclerView",
+                                "Jetpack Compose RecyclerView使用详解"
+                            )
                         )
                     )
                 }
@@ -91,26 +96,36 @@ fun Title(title: String) {
 }
 
 @Composable
-fun StudyList(studyList: MutableList<String>) {
+fun StudyList(studyList: MutableList<ItemBean>) {
     /**
      * 可滚动的垂直布局
      */
-    ScrollableColumn() {
+    ScrollableColumn(modifier = Modifier) {
         val context = ContextAmbient.current
-        studyList.forEachIndexed { index, title ->
-            StudyCardItem(bgUrl = "", title = title, onClick = {
-                Toast.makeText(context, "点击了第${index + 1}", Toast.LENGTH_SHORT).show()
+        studyList.forEachIndexed { index, item ->
+            StudyCardItem(itemBean = item, onClick = {
+                when (index) {
+                    6 -> {
+                        val intent = Intent(context, RecyclerViewActivity::class.java)
+                        context.startActivity(intent)
+                    }
+                    else -> {
+                        Toast.makeText(context, "${item.content}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
             })
         }
     }
 }
 
 @Composable
-fun StudyCardItem(bgUrl: String, title: String, onClick: () -> Unit) {
+fun StudyCardItem(itemBean: ItemBean, onClick: () -> Unit) {
     Box(
         modifier = Modifier.clickable(onClick = onClick).padding(16.dp, 8.dp, 16.dp, 8.dp)
             .clip(shape = RoundedCornerShape(8.dp))
             .background(colorResource(id = R.color.lightcoral))
+            .fillMaxWidth()
     ) {
         //暂时支持网络布片加载
 //        Image(
@@ -120,15 +135,31 @@ fun StudyCardItem(bgUrl: String, title: String, onClick: () -> Unit) {
 //            contentScale = ContentScale.Crop
 //        )
 
-        Text(
-            text = title,
-            color = Color.White,
-            textAlign = TextAlign.Center,
-            fontFamily = FontFamily.Monospace,
-            fontSize = 16.sp,
-            modifier = Modifier.padding(10.dp)
-                .fillMaxWidth().align(Alignment.Center)
+        Image(
+            asset = imageResource(R.drawable.avatar),
+            modifier = Modifier.width(100.dp).height(100.dp).clip(shape = RoundedCornerShape(8.dp))
         )
+
+
+        Column(modifier = Modifier.padding(start = 116.dp).align(Alignment.CenterStart)) {
+            Text(
+                text = itemBean.title,
+                color = Color.White,
+                textAlign = TextAlign.Center,
+                fontFamily = FontFamily.Monospace,
+                fontSize = 18.sp,
+            )
+
+            Text(
+                text = itemBean.content,
+                color = Color.Gray,
+                textAlign = TextAlign.Center,
+                fontFamily = FontFamily.SansSerif,
+                fontSize = 14.sp,
+                modifier = Modifier.padding(top = 16.dp)
+            )
+        }
+
     }
 }
 
@@ -140,26 +171,11 @@ fun DefaultPreview() {
             Title(title = "JetPack Compose Study")
             StudyList(
                 studyList = arrayListOf(
-                    "知识点1",
-                    "知识点2",
-                    "知识点3",
-                    "知识点4",
-                    "知识点5",
-                    "知识点6",
-                    "知识点7",
-                    "知识点8",
-                    "知识点9",
-                    "知识点10",
-                    "知识点11",
-                    "知识点12",
-                    "知识点13",
-                    "知识点14",
-                    "知识点15",
-                    "知识点16",
-                    "知识点17",
-                    "知识点18",
-                    "知识点19",
-                    "知识点20",
+                    ItemBean(
+                        "",
+                        "recyclerView",
+                        "Jetpack Compose RecyclerView使用详解"
+                    )
                 )
             )
         }
