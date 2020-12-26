@@ -105,6 +105,10 @@ fun StudyList(studyList: MutableList<ItemBean>) {
         studyList.forEachIndexed { index, item ->
             StudyCardItem(itemBean = item, onClick = {
                 when (index) {
+                    1 -> {
+                        val intent = Intent(context, LoginActivity::class.java)
+                        context.startActivity(intent)
+                    }
                     6 -> {
                         val intent = Intent(context, RecyclerViewActivity::class.java)
                         context.startActivity(intent)
