@@ -26,6 +26,9 @@ import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
 import com.example.jetpackcomposestudy.*
 import com.example.jetpackcomposestudy.R
+import com.example.jetpackcomposestudy.bean.ItemBean
+import com.example.jetpackcomposestudy.list.ListTestActivity
+import com.example.jetpackcomposestudy.login.LoginActivity
 
 class BaseWidgetFragment : Fragment() {
 
@@ -72,6 +75,12 @@ class BaseWidgetFragment : Fragment() {
                             "",
                             "recyclerView",
                             "Jetpack Compose RecyclerView使用详解"
+                        ),
+
+                        ItemBean(
+                            "",
+                            "动态列表",
+                            "数据和状态绑定实例"
                         )
                     )
                 )
@@ -101,6 +110,11 @@ class BaseWidgetFragment : Fragment() {
                             val intent = Intent(context, RecyclerViewActivity::class.java)
                             context.startActivity(intent)
                         }
+
+                        7 -> {
+                            val intent = Intent(context, ListTestActivity::class.java)
+                            context.startActivity(intent)
+                        }
                         else -> {
                             Toast.makeText(context, "${item.content}", Toast.LENGTH_SHORT).show()
                         }
@@ -121,7 +135,8 @@ class BaseWidgetFragment : Fragment() {
         ) {
             Image(
                 asset = imageResource(R.drawable.avatar),
-                modifier = Modifier.width(100.dp).height(100.dp).clip(shape = RoundedCornerShape(8.dp))
+                modifier = Modifier.width(100.dp).height(100.dp)
+                    .clip(shape = RoundedCornerShape(8.dp))
             )
 
 

@@ -54,6 +54,21 @@ class ImagesActivity : AppCompatActivity() {
                     )
 
             )
+
+            Image(
+                asset = imageResource(R.drawable.avatar),
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.width(100.dp).height(100.dp)
+                    .clip(shape = RoundedCornerShape(50.dp))
+                    .border(
+                        border = BorderStroke(2.dp, Color.Red),
+                        shape = RoundedCornerShape(50.dp)
+                    ).border(
+                        border = BorderStroke(4.dp, Color.Blue),
+                        shape = RoundedCornerShape(50.dp)
+                    )
+
+            )
         }
     }
 

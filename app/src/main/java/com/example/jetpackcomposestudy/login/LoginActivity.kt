@@ -1,4 +1,4 @@
-package com.example.jetpackcomposestudy
+package com.example.jetpackcomposestudy.login
 
 import android.os.Bundle
 import android.text.TextUtils

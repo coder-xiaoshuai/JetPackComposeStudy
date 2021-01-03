@@ -23,7 +23,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".LoginActivity" />
+        <activity
+            android:name=".list.ListTestActivity"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".login.LoginActivity" />
 
         <activity android:name=".ImagesActivity" />
     </application>
