@@ -30,6 +30,8 @@
         <activity android:name=".login.LoginActivity" />
 
         <activity android:name=".ImagesActivity" />
+
+        <activity android:name=".demo.CheckBoxActivity" />
     </application>
 
 </manifest>

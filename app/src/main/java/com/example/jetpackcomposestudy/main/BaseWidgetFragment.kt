@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.Toast
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -27,6 +28,7 @@ import androidx.fragment.app.Fragment
 import com.example.jetpackcomposestudy.*
 import com.example.jetpackcomposestudy.R
 import com.example.jetpackcomposestudy.bean.ItemBean
+import com.example.jetpackcomposestudy.demo.CheckBoxActivity
 import com.example.jetpackcomposestudy.list.ListTestActivity
 import com.example.jetpackcomposestudy.login.LoginActivity
 
@@ -104,6 +106,10 @@ class BaseWidgetFragment : Fragment() {
                         }
                         2 -> {
                             val intent = Intent(context, ImagesActivity::class.java)
+                            context.startActivity(intent)
+                        }
+                        3 -> {
+                            val intent = Intent(context, CheckBoxActivity::class.java)
                             context.startActivity(intent)
                         }
                         6 -> {

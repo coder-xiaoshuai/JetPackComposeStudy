@@ -10,10 +10,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.TextField
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.runtime.savedinstancestate.savedInstanceState
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.setContent
@@ -35,8 +33,10 @@ class LoginActivity : AppCompatActivity() {
     @Composable
     fun loginUI() {
         Column(modifier = Modifier.fillMaxWidth().fillMaxHeight()) {
-            var phone by savedInstanceState { "" }
+//            var phone by savedInstanceState { "" }
+            var phone by remember { mutableStateOf("") }
             var password by savedInstanceState { "" }
+
             TextField(
                 value = phone ?: "",
                 onValueChange = {
