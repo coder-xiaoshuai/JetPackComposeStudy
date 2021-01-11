@@ -12,10 +12,8 @@ import androidx.compose.material.Tab
 import androidx.compose.material.TabConstants
 import androidx.compose.material.TabConstants.defaultTabIndicatorOffset
 import androidx.compose.material.TabRow
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.runtime.savedinstancestate.savedInstanceState
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
@@ -47,6 +45,12 @@ class MainActivity : AppCompatActivity() {
             Column(modifier = Modifier.fillMaxWidth()) {
                 MainTitle(title = "Jetpack Compose Study")
                 MainTopTab()
+
+                //willl be called the first time a compose function is applied.
+                onActive(callback = { /*TODO*/ })
+
+                //will be called when the compose function isn’t part of the composition anymore.
+                onDispose(callback = { /*TODO*/ })
             }
         }
         showTargetFragment(baseInfoFragment)

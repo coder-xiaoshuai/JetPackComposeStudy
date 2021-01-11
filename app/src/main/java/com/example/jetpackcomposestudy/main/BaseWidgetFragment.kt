@@ -29,6 +29,8 @@ import com.example.jetpackcomposestudy.*
 import com.example.jetpackcomposestudy.R
 import com.example.jetpackcomposestudy.bean.ItemBean
 import com.example.jetpackcomposestudy.demo.CheckBoxActivity
+import com.example.jetpackcomposestudy.demo.DialogDemoActivity
+import com.example.jetpackcomposestudy.demo.LifeCycleDemoActivity
 import com.example.jetpackcomposestudy.list.ListTestActivity
 import com.example.jetpackcomposestudy.login.LoginActivity
 
@@ -83,7 +85,15 @@ class BaseWidgetFragment : Fragment() {
                             "",
                             "动态列表",
                             "数据和状态绑定实例"
+                        ),
+
+                        ItemBean(
+                            "",
+                            "dialog",
+                            "dialog使用"
                         )
+
+
                     )
                 )
             }
@@ -100,6 +110,10 @@ class BaseWidgetFragment : Fragment() {
             studyList.forEachIndexed { index, item ->
                 StudyCardItem(itemBean = item, onClick = {
                     when (index) {
+                        0 -> {
+                            val intent = Intent(context, LifeCycleDemoActivity::class.java)
+                            context.startActivity(intent)
+                        }
                         1 -> {
                             val intent = Intent(context, LoginActivity::class.java)
                             context.startActivity(intent)
@@ -119,6 +133,11 @@ class BaseWidgetFragment : Fragment() {
 
                         7 -> {
                             val intent = Intent(context, ListTestActivity::class.java)
+                            context.startActivity(intent)
+                        }
+
+                        8 -> {
+                            val intent = Intent(context, DialogDemoActivity::class.java)
                             context.startActivity(intent)
                         }
                         else -> {

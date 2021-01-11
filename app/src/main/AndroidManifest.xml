@@ -32,6 +32,10 @@
         <activity android:name=".ImagesActivity" />
 
         <activity android:name=".demo.CheckBoxActivity" />
+
+        <activity android:name=".demo.DialogDemoActivity" />
+
+        <activity android:name=".demo.LifeCycleDemoActivity" />
     </application>
 
 </manifest>
