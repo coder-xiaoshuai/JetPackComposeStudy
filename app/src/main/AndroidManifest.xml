@@ -36,6 +36,12 @@
         <activity android:name=".demo.DialogDemoActivity" />
 
         <activity android:name=".demo.LifeCycleDemoActivity" />
+
+        <activity android:name=".demo.AnimationDemoActivity" />
+
+        <activity android:name=".demo.SizeDemoActivity" />
+
+        <activity android:name=".demo.ImageListDemoActivity" />
     </application>
 
 </manifest>

@@ -28,9 +28,7 @@ import androidx.fragment.app.Fragment
 import com.example.jetpackcomposestudy.*
 import com.example.jetpackcomposestudy.R
 import com.example.jetpackcomposestudy.bean.ItemBean
-import com.example.jetpackcomposestudy.demo.CheckBoxActivity
-import com.example.jetpackcomposestudy.demo.DialogDemoActivity
-import com.example.jetpackcomposestudy.demo.LifeCycleDemoActivity
+import com.example.jetpackcomposestudy.demo.*
 import com.example.jetpackcomposestudy.list.ListTestActivity
 import com.example.jetpackcomposestudy.login.LoginActivity
 
@@ -111,7 +109,7 @@ class BaseWidgetFragment : Fragment() {
                 StudyCardItem(itemBean = item, onClick = {
                     when (index) {
                         0 -> {
-                            val intent = Intent(context, LifeCycleDemoActivity::class.java)
+                            val intent = Intent(context, AnimationDemoActivity::class.java)
                             context.startActivity(intent)
                         }
                         1 -> {
@@ -124,6 +122,15 @@ class BaseWidgetFragment : Fragment() {
                         }
                         3 -> {
                             val intent = Intent(context, CheckBoxActivity::class.java)
+                            context.startActivity(intent)
+                        }
+                        4 -> {
+                            val intent = Intent(context, SizeDemoActivity::class.java)
+                            context.startActivity(intent)
+                        }
+
+                        5 -> {
+                            val intent = Intent(context, ImageListDemoActivity::class.java)
                             context.startActivity(intent)
                         }
                         6 -> {
